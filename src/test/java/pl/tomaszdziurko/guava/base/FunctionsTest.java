@@ -54,7 +54,7 @@ public class FunctionsTest {
 
         Function<String, String> reverseFunction = new Function<String, String>() {
             public String apply(String string) {
-                if(string == null) {
+                if (string == null) {
                     return null;
                 }
                 return new StringBuilder(string).reverse().toString();

@@ -87,8 +87,8 @@ public class EventBusTest {
         // then
         assertThat(reader.getLastMessage()).isEqualTo(200);
         assertThat(listener.getLastMessage()).isEqualTo(200);
-        
-        
+
+
         //when 
         eventBus.unregister(reader);
         eventBus.post(new OurTestEvent(300));

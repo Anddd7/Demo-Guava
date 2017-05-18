@@ -11,7 +11,6 @@ import static org.fest.assertions.Assertions.assertThat;
 public class PrimitivesTest {
 
 
-
     @Test
     public void shouldFindGivenNumberInArray() throws Exception {
 
@@ -24,8 +23,7 @@ public class PrimitivesTest {
         assertThat(Ints.indexOf(array, 5)).isEqualTo(0);
     }
 
-    final int[] array2 = new int[] {0, 14, 99};
-
+    final int[] array2 = new int[]{0, 14, 99};
 
 
     @Test
@@ -38,13 +36,13 @@ public class PrimitivesTest {
         assertThat(Ints.join(":", array2)).isEqualTo("0:14:99");
     }
 
-    final int[] array = new int[] {5, 2, 4, -12, 100, 450, 22, 7};
+    final int[] array = new int[]{5, 2, 4, -12, 100, 450, 22, 7};
 
     @Test
     public void shouldFindMaxAndMinInArray() throws Exception {
 
-       assertThat(Ints.min(array)).isEqualTo(-12);
-       assertThat(Ints.max(array)).isEqualTo(450);
+        assertThat(Ints.min(array)).isEqualTo(-12);
+        assertThat(Ints.max(array)).isEqualTo(450);
 
     }
 

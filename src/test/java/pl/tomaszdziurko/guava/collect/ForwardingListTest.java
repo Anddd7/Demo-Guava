@@ -28,20 +28,19 @@ public class ForwardingListTest {
 
             @Override
             public boolean add(Integer element) {
-                if(element == null) {
+                if (element == null) {
                     return super.add(element);
                 }
-                if(element.intValue() == 0) {
+                if (element.intValue() == 0) {
                     return super.add(element);
-                }
-                else {
+                } else {
                     return super.add(element) && super.add(-element);
                 }
             }
 
             @Override
             public boolean addAll(Collection<? extends Integer> integers) {
-                if(integers == null) {
+                if (integers == null) {
                     return add(null);
                 }
                 boolean result = true;

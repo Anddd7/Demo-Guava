@@ -13,9 +13,9 @@ public class Country {
     public static final Country SPAIN = new Country(3L, "Spain", "Madrid", 46.0, Continent.EUROPE, 508);
     public static final Country ENGLAND = new Country(4L, "England", "London", 51.446, Continent.EUROPE, 130);
     public static final Country FINLAND_WITHOUT_CAPITAL_CITY = new Country(5L, "Finland", null, null, Continent.EUROPE,
-                                                                           null);
+            null);
     public static final Country SOUTH_AFRICA = new Country(9L, "South Africa", "Pretoria", 50.586, Continent.AFRICA,
-                                                           1221);
+            1221);
     public static final Country ICELAND = new Country(8L, "Iceland", "Reykjavik", 0.318, Continent.EUROPE, 103);
 
     private Long id;
@@ -106,9 +106,9 @@ public class Country {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                          .add("name", name)
-                          .add("capital city", capitalCity)
-                          .add("population", population)
-                          .toString();
+                .add("name", name)
+                .add("capital city", capitalCity)
+                .add("population", population)
+                .toString();
     }
 }

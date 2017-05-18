@@ -65,7 +65,7 @@ public class CharMatcherTest {
         assertThat(CharMatcher.DIGIT.collapseFrom("Hello 1234 567", 'x')).isEqualTo("Hello x x");
     }
 
-     @Test
+    @Test
     public void shouldReplaceAllDigitsByX() throws Exception {
         assertThat(CharMatcher.DIGIT.replaceFrom("Hello 1234 567", 'x')).isEqualTo("Hello xxxx xxx");
     }

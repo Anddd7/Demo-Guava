@@ -3,7 +3,7 @@ package pl.tomaszdziurko.guava.eventbus;
 import com.google.common.eventbus.Subscribe;
 
 /**
- *  Another class which can subscribe to events
+ * Another class which can subscribe to events
  */
 public class EventListener {
 

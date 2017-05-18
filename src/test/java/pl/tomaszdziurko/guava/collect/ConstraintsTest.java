@@ -20,7 +20,7 @@ public class ConstraintsTest {
 
         // given
         List<Integer> numbers = Constraints.constrainedList(Lists.newArrayList(1, 2, 3),
-                                                            element -> Preconditions.checkNotNull(element));
+                element -> Preconditions.checkNotNull(element));
 
         // when
         numbers.add(null);

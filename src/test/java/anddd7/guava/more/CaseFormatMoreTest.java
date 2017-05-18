@@ -1,4 +1,4 @@
-package anddd7.guava.base;
+package anddd7.guava.more;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.base.Converter;
@@ -22,8 +22,8 @@ public class CaseFormatMoreTest {
         Converter simpleConverter2 = CaseFormat.LOWER_UNDERSCORE.converterTo(CaseFormat.UPPER_UNDERSCORE);
 
         Converter multiConverter = CaseFormat.LOWER_HYPHEN.converterTo(CaseFormat.LOWER_CAMEL)
-                                                          .andThen(CaseFormat.LOWER_CAMEL.converterTo(
-                                                                  CaseFormat.UPPER_UNDERSCORE));
+                .andThen(CaseFormat.LOWER_CAMEL.converterTo(
+                        CaseFormat.UPPER_UNDERSCORE));
 
 
         // then
@@ -33,11 +33,11 @@ public class CaseFormatMoreTest {
 
         // then reverse the Converter
         assertThat(simpleConverter1.reverse()
-                                   .convert("HelloWorld")).isEqualTo("helloWorld");
+                .convert("HelloWorld")).isEqualTo("helloWorld");
         assertThat(simpleConverter2.reverse()
-                                   .convert("HELLO_WORLD")).isEqualTo("hello_world");
+                .convert("HELLO_WORLD")).isEqualTo("hello_world");
         assertThat(multiConverter.reverse()
-                                 .convert("HELLO_WORLD")).isEqualTo("hello-world");
+                .convert("HELLO_WORLD")).isEqualTo("hello-world");
     }
 
     @Test

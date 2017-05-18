@@ -13,7 +13,7 @@ public class PreconditionsTest {
             "Weather is not the best for a sunbath")
     public void shouldThrowIllegalState() throws Exception {
 
-       preconditionsLesson.getSomeSuntan(PreconditionsLesson.Weather.CLOUDY);
+        preconditionsLesson.getSomeSuntan(PreconditionsLesson.Weather.CLOUDY);
     }
 
     @Test(expectedExceptions = NullPointerException.class, expectedExceptionsMessageRegExp =

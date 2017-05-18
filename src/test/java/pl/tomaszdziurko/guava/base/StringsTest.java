@@ -12,7 +12,7 @@ public class StringsTest {
 
     @Test
     public void shouldReturnTrueOnNullString() throws Exception {
-      assertThat(Strings.isNullOrEmpty(null)).isTrue();
+        assertThat(Strings.isNullOrEmpty(null)).isTrue();
     }
 
     @Test

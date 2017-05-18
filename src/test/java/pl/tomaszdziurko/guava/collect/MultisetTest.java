@@ -51,10 +51,10 @@ public class MultisetTest {
         // then
         assertThat(multiset.count("ball")).isEqualTo(6);
 
-        
+
         // when
         multiset.setCount("ball", 2);
-      
+
         // then
         assertThat(multiset.count("ball")).isEqualTo(2);
     }

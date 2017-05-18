@@ -9,9 +9,9 @@ import static org.fest.assertions.Assertions.assertThat;
  * ObjectArrays showcase
  */
 public class ObjectArraysTest {
-    
-    String[] array1 = new String[] {"one", "two", "three"};
-    String[] array2 = new String[] {"four", "five"};
+
+    String[] array1 = new String[]{"one", "two", "three"};
+    String[] array2 = new String[]{"four", "five"};
 
     @Test
     public void shouldContactTwoArrays() throws Exception {

@@ -9,7 +9,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 @GwtCompatible
 public class Constraints {
-    private Constraints() {}
+    private Constraints() {
+    }
 
 
     public static <E> Collection<E> constrainedCollection(Collection<E> collection, Constraint<? super E> constraint) {
@@ -123,7 +124,7 @@ public class Constraints {
 
     public static <E> List<E> constrainedList(List<E> list, Constraint<? super E> constraint) {
         return (list instanceof RandomAccess) ? new ConstrainedRandomAccessList<E>(list,
-                                                                                   constraint) : new ConstrainedList<E>(
+                constraint) : new ConstrainedList<E>(
                 list, constraint);
     }
 

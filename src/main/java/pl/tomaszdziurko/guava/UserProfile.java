@@ -36,8 +36,8 @@ public class UserProfile {
 
     public String toString() {
         return MoreObjects.toStringHelper(this).add("name", name)
-                          .add("nickname", nickname)
-                          .addValue(age).toString();
+                .add("nickname", nickname)
+                .addValue(age).toString();
     }
 
     public String getDisplayName() {

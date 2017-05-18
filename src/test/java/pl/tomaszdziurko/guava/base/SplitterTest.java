@@ -34,9 +34,9 @@ public class SplitterTest {
     }
 
     private List<String> convertToList(Iterator<String> iterator) {
-        List<String> list = Lists.newArrayList( );
+        List<String> list = Lists.newArrayList();
 
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             list.add(iterator.next());
         }
 
@@ -53,7 +53,6 @@ public class SplitterTest {
         assertThat(splittedList.size()).isEqualTo(5);
         assertThat(splittedList.get(2)).isEqualTo("Haskell");
     }
-
 
 
     @Test

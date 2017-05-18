@@ -36,7 +36,7 @@ public class PredicateTest {
         // when
         boolean allCountriesSpecifyCapitalCity = Iterables.all(
                 Lists.newArrayList(Country.POLAND, Country.BELGIUM, Country.FINLAND_WITHOUT_CAPITAL_CITY),
-                    capitalCityProvidedPredicate);
+                capitalCityProvidedPredicate);
 
         // then
         assertFalse(allCountriesSpecifyCapitalCity);
@@ -91,5 +91,5 @@ public class PredicateTest {
         assertThat(elevenInCollectionPredicate.apply(11L)).isTrue();
     }
 
-    
+
 }

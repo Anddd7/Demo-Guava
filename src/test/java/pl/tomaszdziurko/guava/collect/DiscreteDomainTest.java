@@ -9,7 +9,7 @@ import static org.fest.assertions.Assertions.assertThat;
  * Showcas of discrete domains interface
  */
 public class DiscreteDomainTest {
-    
+
 
     @Test
     public void shouldReturnNextInt() throws Exception {

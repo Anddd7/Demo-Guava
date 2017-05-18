@@ -24,7 +24,7 @@ public class IntMathTest {
 
         // silent overflow here
         assertThat(resultOldWay).isEqualTo(Integer.MIN_VALUE + 1);
-        
+
         int result = IntMath.checkedAdd(numberOne, numberTwo);
     }
 
@@ -69,5 +69,5 @@ public class IntMathTest {
         assertThat(log2Result).isEqualTo(4);
         assertThat(log10Result).isEqualTo(2);
     }
-    
+
 }

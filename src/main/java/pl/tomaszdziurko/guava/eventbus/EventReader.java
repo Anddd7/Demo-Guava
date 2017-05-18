@@ -6,7 +6,7 @@ import com.google.common.eventbus.Subscribe;
  * Another class which can subscribe to events
  */
 public class EventReader {
-    
+
     public int lastMessage = 0;
 
     @Subscribe

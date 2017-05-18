@@ -16,9 +16,6 @@ import static org.fest.assertions.Assertions.assertThat;
 public class JoinerTest {
 
 
-
-
-
     public static List<String> languages = Arrays.asList("Java", "Haskell", "Scala", "Brainfuck");
 
     @Test

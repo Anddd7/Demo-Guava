@@ -22,10 +22,10 @@ public class IterablesTest {
     public void shouldCheckLengthOfAllElements() throws Exception {
 
         // given
-        Predicate<String> lengthPredicate = new Predicate<String> () {
+        Predicate<String> lengthPredicate = new Predicate<String>() {
             @Override
             public boolean apply(@Nullable String input) {
-                if(input == null) {
+                if (input == null) {
                     return false;
                 }
                 return input.length() > 3;
@@ -41,7 +41,7 @@ public class IterablesTest {
     public void shouldCheckIfAtLeastOneElementIsEmptyOrNull() throws Exception {
 
         // given
-        Predicate<String> emptyOrNullPredicate = new Predicate<String> () {
+        Predicate<String> emptyOrNullPredicate = new Predicate<String>() {
 
             @Override
             public boolean apply(@Nullable String input) {
@@ -74,11 +74,11 @@ public class IterablesTest {
 
         // then
         Iterator<String> iterator = cycleIterables.iterator();
-        
-        for(int i = 0; i < 100; i++) {
+
+        for (int i = 0; i < 100; i++) {
             iterator.next();
         }
-        
+
         assertThat(iterator.next()).is(new Condition<String>() {
             @Override
             public boolean matches(String value) {
@@ -97,7 +97,7 @@ public class IterablesTest {
         numbersList.add(2);
         numbersList.add(3L);
         numbersList.add(4);
-        
+
         // when
         Iterable<Long> filteredList = Iterables.filter(numbersList, Long.class);
 
@@ -182,7 +182,7 @@ public class IterablesTest {
         Iterator<List<Integer>> iterator = partitionedLists.iterator();
         assertThat(iterator.next().size()).isEqualTo(5);
         assertThat(iterator.next().size()).isEqualTo(3);
-        
+
     }
 
     @Test
@@ -193,7 +193,7 @@ public class IterablesTest {
 
         // when
         Number[] numbers = Iterables.toArray(numbersList, Number.class);
-        Number[] numbersWithTraditionalWay = numbersList.toArray(new Number[] {});
+        Number[] numbersWithTraditionalWay = numbersList.toArray(new Number[]{});
 
 
         // then

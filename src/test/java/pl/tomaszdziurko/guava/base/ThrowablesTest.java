@@ -20,16 +20,13 @@ public class ThrowablesTest {
             try {
                 try {
                     throw new RuntimeException("Innermost exception");
-                }
-                catch(Exception e) {
+                } catch (Exception e) {
                     throw new SQLException("Middle tier exception", e);
                 }
-            }
-            catch(Exception e) {
+            } catch (Exception e) {
                 throw new IllegalStateException("Last exception", e);
             }
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             List<Throwable> exceptionsChain = Throwables.getCausalChain(e);
             assertThat(exceptionsChain).onProperty("message")
                     .containsExactly("Last exception", "Middle tier exception", "Innermost exception");
@@ -43,16 +40,13 @@ public class ThrowablesTest {
             try {
                 try {
                     throw new RuntimeException("Innermost exception");
-                }
-                catch(Exception e) {
+                } catch (Exception e) {
                     throw new SQLException("Middle tier exception", e);
                 }
-            }
-            catch(Exception e) {
+            } catch (Exception e) {
                 throw new IllegalStateException("Last exception", e);
             }
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             assertThat(Throwables.getRootCause(e).getMessage()).isEqualTo("Innermost exception");
         }
     }
@@ -64,16 +58,13 @@ public class ThrowablesTest {
             try {
                 try {
                     throw new RuntimeException("Innermost exception");
-                }
-                catch(Exception e) {
+                } catch (Exception e) {
                     throw new SQLException("Middle tier exception", e);
                 }
-            }
-            catch(Exception e) {
+            } catch (Exception e) {
                 throw new IllegalStateException("Last exception", e);
             }
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             assertThat(Throwables.getStackTraceAsString(e))
                     .contains("Caused by: java.lang.RuntimeException: Innermost exception");
         }

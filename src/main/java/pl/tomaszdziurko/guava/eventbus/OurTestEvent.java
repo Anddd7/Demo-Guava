@@ -4,7 +4,7 @@ package pl.tomaszdziurko.guava.eventbus;
  * Test event class
  */
 public class OurTestEvent {
-    
+
     private final int message;
 
     public OurTestEvent(int message) {
