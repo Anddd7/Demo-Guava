@@ -5,7 +5,14 @@ import com.google.common.collect.*;
 import com.google.common.primitives.Ints;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class CollectionSample {
     /**
@@ -135,5 +142,36 @@ public class CollectionSample {
 
         //...
 
+    }
+
+    @Test
+    public void withJava8() {
+        Supplier<Stream<Integer>> streamSupplier = () -> IntStream.range(1,100).mapToObj(value -> value);
+
+//collect list
+        print(
+                streamSupplier.get().collect(() -> new ArrayList(), (list, value) -> list.add(value), (list1, list2) -> list1.addAll(list2)));
+        print(
+                streamSupplier.get().collect(ArrayList::new, List::add, List::addAll));
+        print(
+                streamSupplier.get().collect(Collectors.toList()));
+//collect map
+        print(
+                streamSupplier.get().collect(Maps::newHashMap,(hashMap, obj) -> hashMap.put(obj%2,obj) ,(hashMap, hashMap2) -> hashMap.putAll(hashMap2)));
+        print(
+                streamSupplier.get().collect(Collectors.toMap(p -> p%2, p -> p, (o, o2) -> o2)));
+//collect map<i,list>
+        print(
+                streamSupplier.get().collect(Collectors.groupingBy(o -> o%2)));
+
+        //multimap
+        Multimap multimap = ArrayListMultimap.create();
+        streamSupplier.get().forEach(integer -> multimap.put(integer%2,integer));
+        print(multimap);
+
+    }
+
+    public void print(Object target) {
+        System.out.println(target);
     }
 }
