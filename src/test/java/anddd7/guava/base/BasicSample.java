@@ -85,8 +85,8 @@ public class BasicSample {
             int a = 1 / 0;
         } catch (Throwable t) {
             //使用Throwable可以拦截所有Exception和Error ,再使用Throwables转换成Exception抛出
-            Throwables.propagateIfInstanceOf(t, ArithmeticException.class);
-            Throwables.propagate(t);
+            Throwables.throwIfInstanceOf(t, ArithmeticException.class);
+            throw t;
         }
 
     }

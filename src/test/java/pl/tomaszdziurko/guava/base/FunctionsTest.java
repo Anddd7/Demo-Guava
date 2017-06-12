@@ -8,7 +8,6 @@ import com.google.common.collect.Maps;
 import org.testng.annotations.Test;
 import pl.tomaszdziurko.guava.geo.Country;
 
-import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -25,14 +24,8 @@ public class FunctionsTest {
     public void shouldPrintCountryWithCapitalCityUpperCase() throws Exception {
 
         // given
-        Function<Country, String> capitalCityFunction = new Function<Country, String>() {
-            public String apply(@Nullable Country country) {
-                if (country == null) {
-                    return "";
-                }
-                return country.getCapitalCity();
-            }
-        };
+        Function<Country, String> capitalCityFunction = country ->
+                country == null ? "" : country.getCapitalCity();
 
         // when
         Collection<String> capitalCities = Collections2.transform(Country.getSomeCountries(), capitalCityFunction);
@@ -43,23 +36,12 @@ public class FunctionsTest {
 
     @Test
     public void shouldComposeTwoFunctions() throws Exception {
-        Function<Country, String> upperCaseFunction = new Function<Country, String>() {
-            public String apply(@Nullable Country country) {
-                if (country == null) {
-                    return "";
-                }
-                return country.getCapitalCity().toUpperCase();
-            }
-        };
+        Function<Country, String> upperCaseFunction = country ->
+                country == null ? "" : country.getCapitalCity().toUpperCase();
 
-        Function<String, String> reverseFunction = new Function<String, String>() {
-            public String apply(String string) {
-                if (string == null) {
-                    return null;
-                }
-                return new StringBuilder(string).reverse().toString();
-            }
-        };
+        Function<String, String> reverseFunction = string ->
+                string == null ? null : new StringBuilder(string).reverse().toString();
+
         Function<Country, String> composedFunction = Functions.compose(reverseFunction, upperCaseFunction);
 
         // when
