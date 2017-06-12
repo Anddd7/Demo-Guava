@@ -4,24 +4,24 @@ import com.google.common.eventbus.Subscribe;
 
 public class MultipleListener {
 
-    public Integer lastInteger;
-    public Long lastLong;
+  public Integer lastInteger;
+  public Long lastLong;
 
-    @Subscribe
-    public void listenInteger(Integer event) {
-        lastInteger = event;
-    }
+  @Subscribe
+  public void listenInteger(Integer event) {
+    lastInteger = event;
+  }
 
-    @Subscribe
-    public void listenLong(Long event) {
-        lastLong = event;
-    }
+  @Subscribe
+  public void listenLong(Long event) {
+    lastLong = event;
+  }
 
-    public Integer getLastInteger() {
-        return lastInteger;
-    }
+  public Integer getLastInteger() {
+    return lastInteger;
+  }
 
-    public Long getLastLong() {
-        return lastLong;
-    }
+  public Long getLastLong() {
+    return lastLong;
+  }
 }

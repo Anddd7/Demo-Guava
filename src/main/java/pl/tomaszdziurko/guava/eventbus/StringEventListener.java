@@ -8,14 +8,14 @@ import com.google.common.eventbus.Subscribe;
 public class StringEventListener {
 
 
-    public String lastMessage;
+  public String lastMessage;
 
-    @Subscribe
-    public void listen(StringTestEvent event) {
-        lastMessage = event.getMessage();
-    }
+  @Subscribe
+  public void listen(StringTestEvent event) {
+    lastMessage = event.getMessage();
+  }
 
-    public String getLastMessage() {
-        return lastMessage;
-    }
+  public String getLastMessage() {
+    return lastMessage;
+  }
 }

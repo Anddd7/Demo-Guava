@@ -86,12 +86,11 @@ public class StringSample {
   }
 
   @Test
-  public  void testCaseFormat(){
+  public void testCaseFormat() {
     System.out.println(
-        CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL,"HYDM_SADF")
+        CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, "HYDM_SADF")
     );
   }
-
 
 
 }

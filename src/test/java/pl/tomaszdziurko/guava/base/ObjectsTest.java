@@ -1,42 +1,42 @@
 package pl.tomaszdziurko.guava.base;
 
 
+import static org.fest.assertions.Assertions.assertThat;
+
 import org.testng.annotations.Test;
 import pl.tomaszdziurko.guava.UserProfile;
-
-import static org.fest.assertions.Assertions.assertThat;
 
 @Test
 public class ObjectsTest {
 
-    UserProfile objectsLesson = new UserProfile("name", "nickname", 20);
-    UserProfile objectsLesson2 = new UserProfile("name", "nickname", 20);
-    UserProfile nullNicknameObject = new UserProfile("name", null, 20);
+  UserProfile objectsLesson = new UserProfile("name", "nickname", 20);
+  UserProfile objectsLesson2 = new UserProfile("name", "nickname", 20);
+  UserProfile nullNicknameObject = new UserProfile("name", null, 20);
 
-    @Test
-    public void shouldTestEquals() throws Exception {
+  @Test
+  public void shouldTestEquals() throws Exception {
 
-        assertThat(objectsLesson).isEqualTo(objectsLesson2);
-    }
+    assertThat(objectsLesson).isEqualTo(objectsLesson2);
+  }
 
-    @Test
-    public void shouldTestHashcode() throws Exception {
+  @Test
+  public void shouldTestHashcode() throws Exception {
 
-        assertThat(objectsLesson.hashCode()).isEqualTo(objectsLesson2.hashCode());
-    }
+    assertThat(objectsLesson.hashCode()).isEqualTo(objectsLesson2.hashCode());
+  }
 
-    @Test
-    public void shouldRenderNameAsDisplayableName() throws Exception {
+  @Test
+  public void shouldRenderNameAsDisplayableName() throws Exception {
 
-        // then
-        assertThat(nullNicknameObject.getDisplayName()).isEqualTo("name");
-    }
+    // then
+    assertThat(nullNicknameObject.getDisplayName()).isEqualTo("name");
+  }
 
-    @Test
-    public void shouldShowHowToStringMethodWorks() throws Exception {
+  @Test
+  public void shouldShowHowToStringMethodWorks() throws Exception {
 
-        assertThat(objectsLesson.toString())
-                .isEqualTo("UserProfile{name=name, nickname=nickname, 20}");
+    assertThat(objectsLesson.toString())
+        .isEqualTo("UserProfile{name=name, nickname=nickname, 20}");
 
-    }
+  }
 }

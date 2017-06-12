@@ -5,14 +5,14 @@ package pl.tomaszdziurko.guava.eventbus;
  */
 public class LonelyEvent {
 
-    private String message;
+  private String message;
 
-    public LonelyEvent(String message) {
-        this.message = message;
-    }
+  public LonelyEvent(String message) {
+    this.message = message;
+  }
 
-    public String getMessage() {
-        return message;
-    }
+  public String getMessage() {
+    return message;
+  }
 }
 

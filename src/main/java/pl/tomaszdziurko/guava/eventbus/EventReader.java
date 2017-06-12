@@ -7,14 +7,14 @@ import com.google.common.eventbus.Subscribe;
  */
 public class EventReader {
 
-    public int lastMessage = 0;
+  public int lastMessage = 0;
 
-    @Subscribe
-    public void read(OurTestEvent event) {
-        lastMessage = event.getMessage();
-    }
+  @Subscribe
+  public void read(OurTestEvent event) {
+    lastMessage = event.getMessage();
+  }
 
-    public int getLastMessage() {
-        return lastMessage;
-    }
+  public int getLastMessage() {
+    return lastMessage;
+  }
 }

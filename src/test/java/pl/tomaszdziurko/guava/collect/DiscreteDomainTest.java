@@ -1,9 +1,9 @@
 package pl.tomaszdziurko.guava.collect;
 
+import static org.fest.assertions.Assertions.assertThat;
+
 import com.google.common.collect.DiscreteDomain;
 import org.testng.annotations.Test;
-
-import static org.fest.assertions.Assertions.assertThat;
 
 /**
  * Showcas of discrete domains interface
@@ -11,57 +11,57 @@ import static org.fest.assertions.Assertions.assertThat;
 public class DiscreteDomainTest {
 
 
-    @Test
-    public void shouldReturnNextInt() throws Exception {
+  @Test
+  public void shouldReturnNextInt() throws Exception {
 
-        // given
-        DiscreteDomain<Integer> integers = DiscreteDomain.integers();
+    // given
+    DiscreteDomain<Integer> integers = DiscreteDomain.integers();
 
-        // when
-        Integer next = integers.next(new Integer(100));
+    // when
+    Integer next = integers.next(new Integer(100));
 
-        // then
-        assertThat(next).isEqualTo(101);
-    }
+    // then
+    assertThat(next).isEqualTo(101);
+  }
 
-    @Test
-    public void shouldReturnPreviousInt() throws Exception {
+  @Test
+  public void shouldReturnPreviousInt() throws Exception {
 
-        // given
-        DiscreteDomain<Integer> integers = DiscreteDomain.integers();
+    // given
+    DiscreteDomain<Integer> integers = DiscreteDomain.integers();
 
-        // when
-        Integer next = integers.previous(new Integer(100));
+    // when
+    Integer next = integers.previous(new Integer(100));
 
-        // then
-        assertThat(next).isEqualTo(99);
-    }
+    // then
+    assertThat(next).isEqualTo(99);
+  }
 
-    @Test
-    public void shouldReturnDistance() throws Exception {
+  @Test
+  public void shouldReturnDistance() throws Exception {
 
-        // given
-        DiscreteDomain<Integer> integers = DiscreteDomain.integers();
+    // given
+    DiscreteDomain<Integer> integers = DiscreteDomain.integers();
 
-        // when
-        long distance = integers.distance(100, 150);
+    // when
+    long distance = integers.distance(100, 150);
 
-        // then
-        assertThat(distance).isEqualTo(50L);
-    }
+    // then
+    assertThat(distance).isEqualTo(50L);
+  }
 
-    @Test
-    public void shouldReturnMaxAndMinInt() throws Exception {
+  @Test
+  public void shouldReturnMaxAndMinInt() throws Exception {
 
-        // given
-        DiscreteDomain<Integer> integers = DiscreteDomain.integers();
+    // given
+    DiscreteDomain<Integer> integers = DiscreteDomain.integers();
 
-        // when
-        long min = integers.minValue();
-        long max = integers.maxValue();
+    // when
+    long min = integers.minValue();
+    long max = integers.maxValue();
 
-        // then
-        assertThat(min).isEqualTo(Integer.MIN_VALUE);
-        assertThat(max).isEqualTo(Integer.MAX_VALUE);
-    }
+    // then
+    assertThat(min).isEqualTo(Integer.MIN_VALUE);
+    assertThat(max).isEqualTo(Integer.MAX_VALUE);
+  }
 }

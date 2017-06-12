@@ -5,14 +5,14 @@ package pl.tomaszdziurko.guava.eventbus;
  */
 public class StringTestEvent {
 
-    private String message;
+  private String message;
 
-    public String getMessage() {
-        return message;
-    }
+  public String getMessage() {
+    return message;
+  }
 
-    public StringTestEvent(String message) {
+  public StringTestEvent(String message) {
 
-        this.message = message;
-    }
+    this.message = message;
+  }
 }

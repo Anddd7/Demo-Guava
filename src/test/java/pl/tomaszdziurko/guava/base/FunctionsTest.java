@@ -1,18 +1,17 @@
 package pl.tomaszdziurko.guava.base;
 
+import static org.fest.assertions.Assertions.assertThat;
+
 import com.google.common.base.Function;
 import com.google.common.base.Functions;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import org.testng.annotations.Test;
-import pl.tomaszdziurko.guava.geo.Country;
-
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-
-import static org.fest.assertions.Assertions.assertThat;
+import org.testng.annotations.Test;
+import pl.tomaszdziurko.guava.geo.Country;
 
 /**
  * Class to show how Functions in Guava works
@@ -20,107 +19,115 @@ import static org.fest.assertions.Assertions.assertThat;
 
 public class FunctionsTest {
 
-    @Test
-    public void shouldPrintCountryWithCapitalCityUpperCase() throws Exception {
+  @Test
+  public void shouldPrintCountryWithCapitalCityUpperCase() throws Exception {
 
-        // given
-        Function<Country, String> capitalCityFunction = country ->
-                country == null ? "" : country.getCapitalCity();
+    // given
+    Function<Country, String> capitalCityFunction = country ->
+        country == null ? "" : country.getCapitalCity();
 
-        // when
-        Collection<String> capitalCities = Collections2.transform(Country.getSomeCountries(), capitalCityFunction);
+    // when
+    Collection<String> capitalCities = Collections2
+        .transform(Country.getSomeCountries(), capitalCityFunction);
 
-        // then
-        assertThat(capitalCities).contains("Warsaw", "Madrid");
-    }
+    // then
+    assertThat(capitalCities).contains("Warsaw", "Madrid");
+  }
 
-    @Test
-    public void shouldComposeTwoFunctions() throws Exception {
-        Function<Country, String> upperCaseFunction = country ->
-                country == null ? "" : country.getCapitalCity().toUpperCase();
+  @Test
+  public void shouldComposeTwoFunctions() throws Exception {
+    Function<Country, String> upperCaseFunction = country ->
+        country == null ? "" : country.getCapitalCity().toUpperCase();
 
-        Function<String, String> reverseFunction = string ->
-                string == null ? null : new StringBuilder(string).reverse().toString();
+    Function<String, String> reverseFunction = string ->
+        string == null ? null : new StringBuilder(string).reverse().toString();
 
-        Function<Country, String> composedFunction = Functions.compose(reverseFunction, upperCaseFunction);
+    Function<Country, String> composedFunction = Functions
+        .compose(reverseFunction, upperCaseFunction);
 
-        // when
-        Collection<String> reversedCapitalCities = Collections2.transform(Country.getSomeCountries(), composedFunction);
+    // when
+    Collection<String> reversedCapitalCities = Collections2
+        .transform(Country.getSomeCountries(), composedFunction);
 
-        // then
-        assertThat(reversedCapitalCities).contains("WASRAW", "DIRDAM");
-    }
+    // then
+    assertThat(reversedCapitalCities).contains("WASRAW", "DIRDAM");
+  }
 
-    @Test
-    public void shouldUseForMapFunction() throws Exception {
+  @Test
+  public void shouldUseForMapFunction() throws Exception {
 
-        // given
-        Map<String, String> map = Maps.newHashMap();
-        map.put(Country.POLAND.getName(), Country.POLAND.getCapitalCity());
-        map.put(Country.BELGIUM.getName(), Country.BELGIUM.getCapitalCity());
-        map.put(Country.SPAIN.getName(), Country.SPAIN.getCapitalCity());
-        map.put(Country.ENGLAND.getName(), Country.ENGLAND.getCapitalCity());
+    // given
+    Map<String, String> map = Maps.newHashMap();
+    map.put(Country.POLAND.getName(), Country.POLAND.getCapitalCity());
+    map.put(Country.BELGIUM.getName(), Country.BELGIUM.getCapitalCity());
+    map.put(Country.SPAIN.getName(), Country.SPAIN.getCapitalCity());
+    map.put(Country.ENGLAND.getName(), Country.ENGLAND.getCapitalCity());
 
-        // when
-        Function<String, String> capitalCityFromCountryName = Functions.forMap(map);
+    // when
+    Function<String, String> capitalCityFromCountryName = Functions.forMap(map);
 
-        List<String> countries = Lists.newArrayList();
-        countries.add(Country.POLAND.getName());
-        countries.add(Country.BELGIUM.getName());
+    List<String> countries = Lists.newArrayList();
+    countries.add(Country.POLAND.getName());
+    countries.add(Country.BELGIUM.getName());
 
-        // then
-        Collection<String> capitalCities = Collections2.transform(countries, capitalCityFromCountryName);
+    // then
+    Collection<String> capitalCities = Collections2
+        .transform(countries, capitalCityFromCountryName);
 
-        assertThat(capitalCities).containsOnly(Country.POLAND.getCapitalCity(), Country.BELGIUM.getCapitalCity());
-    }
+    assertThat(capitalCities)
+        .containsOnly(Country.POLAND.getCapitalCity(), Country.BELGIUM.getCapitalCity());
+  }
 
-    @Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "Key 'Belgium' not present in map")
-    public void shouldUseForMapFunctionWithNonExistingKey() throws Exception {
+  @Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "Key 'Belgium' not present in map")
+  public void shouldUseForMapFunctionWithNonExistingKey() throws Exception {
 
-        // given
-        Map<String, String> map = Maps.newHashMap();
-        map.put(Country.POLAND.getName(), Country.POLAND.getCapitalCity());
+    // given
+    Map<String, String> map = Maps.newHashMap();
+    map.put(Country.POLAND.getName(), Country.POLAND.getCapitalCity());
 
-        // we omit this one intentionally
-        // map.put(Country.BELGIUM.getName(), Country.BELGIUM.getCapitalCity());
-        map.put(Country.SPAIN.getName(), Country.SPAIN.getCapitalCity());
-        map.put(Country.ENGLAND.getName(), Country.ENGLAND.getCapitalCity());
+    // we omit this one intentionally
+    // map.put(Country.BELGIUM.getName(), Country.BELGIUM.getCapitalCity());
+    map.put(Country.SPAIN.getName(), Country.SPAIN.getCapitalCity());
+    map.put(Country.ENGLAND.getName(), Country.ENGLAND.getCapitalCity());
 
-        // when
-        Function<String, String> capitalCityFromCountryName = Functions.forMap(map);
+    // when
+    Function<String, String> capitalCityFromCountryName = Functions.forMap(map);
 
-        List<String> countries = Lists.newArrayList();
-        countries.add(Country.POLAND.getName());
-        countries.add(Country.BELGIUM.getName());
+    List<String> countries = Lists.newArrayList();
+    countries.add(Country.POLAND.getName());
+    countries.add(Country.BELGIUM.getName());
 
-        // then
-        Collection<String> capitalCities = Collections2.transform(countries, capitalCityFromCountryName);
+    // then
+    Collection<String> capitalCities = Collections2
+        .transform(countries, capitalCityFromCountryName);
 
-        assertThat(capitalCities).containsOnly(Country.POLAND.getCapitalCity(), Country.BELGIUM.getCapitalCity());
-    }
+    assertThat(capitalCities)
+        .containsOnly(Country.POLAND.getCapitalCity(), Country.BELGIUM.getCapitalCity());
+  }
 
-    @Test
-    public void shouldUseForMapFunctionWithDefaultValue() throws Exception {
+  @Test
+  public void shouldUseForMapFunctionWithDefaultValue() throws Exception {
 
-        // given
-        Map<String, String> map = Maps.newHashMap();
-        map.put(Country.POLAND.getName(), Country.POLAND.getCapitalCity());
+    // given
+    Map<String, String> map = Maps.newHashMap();
+    map.put(Country.POLAND.getName(), Country.POLAND.getCapitalCity());
 
-        // we omit this one intentionally
-        // map.put(Country.BELGIUM.getName(), Country.BELGIUM.getCapitalCity());
-        map.put(Country.SPAIN.getName(), Country.SPAIN.getCapitalCity());
-        map.put(Country.ENGLAND.getName(), Country.ENGLAND.getCapitalCity());
+    // we omit this one intentionally
+    // map.put(Country.BELGIUM.getName(), Country.BELGIUM.getCapitalCity());
+    map.put(Country.SPAIN.getName(), Country.SPAIN.getCapitalCity());
+    map.put(Country.ENGLAND.getName(), Country.ENGLAND.getCapitalCity());
 
-        // when
-        Function<String, String> capitalCityFromCountryName = Functions.forMap(map, "Unknown");
+    // when
+    Function<String, String> capitalCityFromCountryName = Functions.forMap(map, "Unknown");
 
-        List<String> countries = Lists.newArrayList();
-        countries.add(Country.POLAND.getName());
-        countries.add(Country.BELGIUM.getName());
+    List<String> countries = Lists.newArrayList();
+    countries.add(Country.POLAND.getName());
+    countries.add(Country.BELGIUM.getName());
 
-        // then
-        Collection<String> capitalCities = Collections2.transform(countries, capitalCityFromCountryName);
+    // then
+    Collection<String> capitalCities = Collections2
+        .transform(countries, capitalCityFromCountryName);
 
-        assertThat(capitalCities).containsOnly(Country.POLAND.getCapitalCity(), "Unknown");
-    }
+    assertThat(capitalCities).containsOnly(Country.POLAND.getCapitalCity(), "Unknown");
+  }
 }
