@@ -1,4 +1,4 @@
-package anddd7.guava.base;
+package anddd7.guava.sample;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;

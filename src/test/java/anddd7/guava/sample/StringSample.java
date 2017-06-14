@@ -1,4 +1,4 @@
-package anddd7.guava.base;
+package anddd7.guava.sample;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.base.CharMatcher;

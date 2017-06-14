@@ -1,4 +1,4 @@
-package anddd7.guava.base;
+package anddd7.guava.sample;
 
 
 import com.google.common.collect.ArrayListMultimap;

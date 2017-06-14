@@ -1,4 +1,4 @@
-package anddd7.guava.base;
+package anddd7.guava.sample;
 
 /**
  * Created by edliao on 2017/5/18.
