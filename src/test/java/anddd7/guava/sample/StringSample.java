@@ -67,16 +67,16 @@ public class StringSample {
         CharMatcher.javaIsoControl().removeFrom(string));
     //只保留数字字符
     System.out.println(
-        CharMatcher.digit().retainFrom(string));
+        CharMatcher.inRange('0', '9').retainFrom(string));
     //去除两端的空格，并把中间的连续空格替换成单个空格
     System.out.println(
         CharMatcher.whitespace().trimAndCollapseFrom(string, ' '));
     //用*号替换所有数字
     System.out.println(
-        CharMatcher.javaDigit().replaceFrom(string, "*"));
+        CharMatcher.inRange('0', '9').replaceFrom(string, "*"));
     // 只保留数字和小写字母
     System.out.println(
-        CharMatcher.javaDigit().or(CharMatcher.javaLowerCase())
+        CharMatcher.inRange('0', '9').or(CharMatcher.javaLowerCase())
             .retainFrom(string));
   }
 
@@ -91,6 +91,4 @@ public class StringSample {
         CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, "HYDM_SADF")
     );
   }
-
-
 }

@@ -26,23 +26,23 @@ public class ByteTest {
     print("Char to byte:", '你');
   }
 
-  public void printString(String target) {
+  private void printString(String target) {
     System.out.println("------------------" + target + "------------------");
     printStringByByte(target);
     printStringByChar(target);
   }
 
-  public void printStringByByte(String target) {
+  private void printStringByByte(String target) {
     print(Charset.defaultCharset().displayName() + " charset - ", target.getBytes());//default utf-8
     print("ASCII charset - ", target.getBytes(Charsets.US_ASCII));
     print("ISO charset - ", target.getBytes(Charsets.ISO_8859_1));
   }
 
-  public void printStringByChar(String target) {
+  private void printStringByChar(String target) {
     print("String to Char to Byte:", target.toCharArray());
   }
 
-  public void print(String desc, byte... bytes) {
+  private void print(String desc, byte... bytes) {
     System.out.print(desc + " is :");
     for (byte b : bytes) {
       System.out.print(b + "|");
@@ -50,7 +50,7 @@ public class ByteTest {
     System.out.println();
   }
 
-  public void print(String desc, char... chars) {
+  private void print(String desc, char... chars) {
     System.out.print(desc + " is :");
     for (char c : chars) {
       System.out.print(c + join(Chars.toByteArray(c)));
@@ -59,7 +59,7 @@ public class ByteTest {
     System.out.println();
   }
 
-  public String join(byte... bytes) {
+  private String join(byte... bytes) {
     StringBuilder sb = new StringBuilder("(Char to Bytes:");
     for (int i = 0; i < bytes.length; i++) {
       if (i != 0) {

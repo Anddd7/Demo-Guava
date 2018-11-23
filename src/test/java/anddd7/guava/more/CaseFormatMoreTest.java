@@ -17,12 +17,12 @@ public class CaseFormatMoreTest {
   @Test
   public void useConverter() throws Exception {
 
-    Converter simpleConverter1 = CaseFormat.LOWER_CAMEL.converterTo(CaseFormat.UPPER_CAMEL);
+    Converter<String, String> simpleConverter1 = CaseFormat.LOWER_CAMEL.converterTo(CaseFormat.UPPER_CAMEL);
 
-    Converter simpleConverter2 = CaseFormat.LOWER_UNDERSCORE
+    Converter<String, String> simpleConverter2 = CaseFormat.LOWER_UNDERSCORE
         .converterTo(CaseFormat.UPPER_UNDERSCORE);
 
-    Converter multiConverter = CaseFormat.LOWER_HYPHEN.converterTo(CaseFormat.LOWER_CAMEL)
+    Converter<String, String> multiConverter = CaseFormat.LOWER_HYPHEN.converterTo(CaseFormat.LOWER_CAMEL)
         .andThen(CaseFormat.LOWER_CAMEL.converterTo(
             CaseFormat.UPPER_UNDERSCORE));
 
@@ -41,12 +41,12 @@ public class CaseFormatMoreTest {
   }
 
   @Test
-  public void useConvertAll() throws Exception {
-    List params = Arrays.asList("helloWord", "niceToMeetYou", "howAreYou");
-    Converter converter = CaseFormat.LOWER_CAMEL.converterTo(CaseFormat.UPPER_UNDERSCORE);
+  public void useConvertAll() {
+    List<String> params = Arrays.asList("helloWord", "niceToMeetYou", "howAreYou");
+    Converter<String, String> converter = CaseFormat.LOWER_CAMEL.converterTo(CaseFormat.UPPER_UNDERSCORE);
 
     //when
-    Iterator results = converter.convertAll(params).iterator();
+    Iterator<String> results = converter.convertAll(params).iterator();
 
     // then
     assertThat(results)
